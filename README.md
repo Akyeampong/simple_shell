@@ -1,1 +1,1 @@
-# simple_shell
+# A simple_shell project by @Akyeampong and @GodsonO

@@ -9,16 +9,16 @@
  */
 char *_strcpy(char *dest, char *src)
 {
-	int i = 0;
+	int x = 0;
 
 	if (dest == src || src == 0)
 		return (dest);
-	while (src[i])
+	while (src[x])
 	{
-		dest[i] = src[i];
-		i++;
+		dest[x] = src[x];
+		x++;
 	}
-	dest[i] = 0;
+	dest[x] = 0;
 	return (dest);
 }
 
@@ -30,37 +30,37 @@ char *_strcpy(char *dest, char *src)
  */
 char *_strdup(const char *str)
 {
-	int length = 0;
+	int len = 0;
 	char *ret;
 
 	if (str == NULL)
 		return (NULL);
 	while (*str++)
-		length++;
-	ret = malloc(sizeof(char) * (length + 1));
+		len++;
+	ret = malloc(sizeof(char) * (len + 1));
 	if (!ret)
 		return (NULL);
-	for (length++; length--;)
-		ret[length] = *--str;
+	for (len++; len--;)
+		ret[len] = *--str;
 	return (ret);
 }
 
 /**
  *_puts - prints an input string
- *@str: the string to be printed
+ *@str: the string to print
  *
- * Return: Nothing
+ * Return: Null
  */
 void _puts(char *str)
 {
-	int i = 0;
+	int w = 0;
 
 	if (!str)
 		return;
-	while (str[i] != '\0')
+	while (str[w] != '\0')
 	{
-		_putchar(str[i]);
-		i++;
+		_putchar(str[w]);
+		w++;
 	}
 }
 
@@ -69,19 +69,19 @@ void _puts(char *str)
  * @c: The character to print
  *
  * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ *         On error, -1 is returned, and errno is set appropriately.
  */
 int _putchar(char c)
 {
-	static int i;
+	static int n;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || n >= WRITE_BUF_SIZE)
 	{
-		write(1, buf, i);
-		i = 0;
+		write(1, buf, n);
+		n = 0;
 	}
 	if (c != BUF_FLUSH)
-		buf[i++] = c;
+		buf[n++] = c;
 	return (1);
 }

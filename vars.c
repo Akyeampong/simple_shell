@@ -4,34 +4,34 @@
  * is_chain - test if current char in buffer is a chain delimeter
  * @info: the parameter struct
  * @buf: the char buffer
- * @p: address of current position in buf
+ * @p: address of current position
  *
  * Return: 1 if chain delimeter, 0 otherwise
  */
 int is_chain(info_t *info, char *buf, size_t *p)
 {
-	size_t j = *p;
+	size_t g = *p;
 
-	if (buf[j] == '|' && buf[j + 1] == '|')
+	if (buf[g] == '|' && buf[g + 1] == '|')
 	{
-		buf[j] = 0;
-		j++;
+		buf[g] = 0;
+		g++;
 		info->cmd_buf_type = CMD_OR;
 	}
-	else if (buf[j] == '&' && buf[j + 1] == '&')
+	else if (buf[g] == '&' && buf[g + 1] == '&')
 	{
-		buf[j] = 0;
-		j++;
+		buf[g] = 0;
+		g++;
 		info->cmd_buf_type = CMD_AND;
 	}
-	else if (buf[j] == ';') /* found end of this command */
+	else if (buf[g] == ';')
 	{
-		buf[j] = 0; /* replace semicolon with null */
+		buf[g] = 0;
 		info->cmd_buf_type = CMD_CHAIN;
 	}
 	else
 		return (0);
-	*p = j;
+	*p = g;
 	return (1);
 }
 

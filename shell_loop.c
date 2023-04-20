@@ -2,24 +2,24 @@
 
 /**
  * hsh - main shell loop
- * @info: the parameter & return info struct
+ * @info: parameter & return info struct
  * @av: the argument vector from main()
  *
  * Return: 0 on success, 1 on error, or error code
  */
 int hsh(info_t *info, char **av)
 {
-	ssize_t r = 0;
+	ssize_t f = 0;
 	int builtin_ret = 0;
 
-	while (r != -1 && builtin_ret != -2)
+	while (f != -1 && builtin_ret != -2)
 	{
 		clear_info(info);
 		if (interactive(info))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
-		r = get_input(info);
-		if (r != -1)
+		f = get_input(info);
+		if (f != -1)
 		{
 			set_info(info, av);
 			builtin_ret = find_builtin(info);
@@ -48,9 +48,9 @@ int hsh(info_t *info, char **av)
  * @info: the parameter & return info struct
  *
  * Return: -1 if builtin not found,
- *			0 if builtin executed successfully,
- *			1 if builtin found but not successful,
- *			-2 if builtin signals exit()
+ *	    0 if builtin executed successfully,
+ *	    1 if builtin found but not successful,
+ *	   -2 if builtin signals exit()
  */
 int find_builtin(info_t *info)
 {
@@ -79,7 +79,7 @@ int find_builtin(info_t *info)
 
 /**
  * find_cmd - finds a command in PATH
- * @info: the parameter & return info struct
+ * @info: parameter and then return info struct
  *
  * Return: void
  */
@@ -132,7 +132,6 @@ void fork_cmd(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
@@ -145,7 +144,6 @@ void fork_cmd(info_t *info)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{

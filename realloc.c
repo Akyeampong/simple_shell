@@ -9,10 +9,10 @@
  */
 char *_memset(char *s, char b, unsigned int n)
 {
-	unsigned int i;
+	unsigned int z;
 
-	for (i = 0; i < n; i++)
-		s[i] = b;
+	for (z = 0; z < n; z++)
+		s[z] = b;
 	return (s);
 }
 
@@ -22,13 +22,13 @@ char *_memset(char *s, char b, unsigned int n)
  */
 void ffree(char **pp)
 {
-	char **a = pp;
+	char **b = pp;
 
 	if (!pp)
 		return;
 	while (*pp)
 		free(*pp++);
-	free(a);
+	free(b);
 }
 
 /**
@@ -39,24 +39,24 @@ void ffree(char **pp)
  *
  * Return: pointer to da ol'block nameen.
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *_realloc(void *ptr, unsigned int o_size, unsigned int n_size)
 {
 	char *p;
 
 	if (!ptr)
-		return (malloc(new_size));
-	if (!new_size)
+		return (malloc(n_size));
+	if (!n_size)
 		return (free(ptr), NULL);
-	if (new_size == old_size)
+	if (n_size == o_size)
 		return (ptr);
 
-	p = malloc(new_size);
+	p = malloc(n_size);
 	if (!p)
 		return (NULL);
 
-	old_size = old_size < new_size ? old_size : new_size;
-	while (old_size--)
-		p[old_size] = ((char *)ptr)[old_size];
+	o_size = o_size < n_size ? o_size : n_size;
+	while (o_size--)
+		p[o_size] = ((char *)ptr)[o_size];
 	free(ptr);
 	return (p);
 }
