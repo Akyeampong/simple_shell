@@ -128,8 +128,8 @@ int loophsh(char **);
 /* toem_errors.c */
 void _eputs(char *);
 int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+int _putfd(char g, int fd);
+int _putsfd(char *s, int fd);
 
 /* toem_string.c */
 int _strlen(char *);
