@@ -41,9 +41,7 @@ int _mycd(info_t *info)
 
 	str = getcwd(buff, 1024);
 	if (!str)
-	{
 		_puts("TODO: >>getcwd failure emsg here<<\n");
-	}
 	if (!info->argv[1])
 	{
 		dir = _getenv(info, "HOME=");
@@ -73,8 +71,10 @@ int _mycd(info_t *info)
 		_eputs(info->argv[1]), _eputchar('\n');
 	}
 	else
+	{
 		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
 		_setenv(info, "PWD", getcwd(buff, 1024));
+	}
 	return (0);
 }
 /**
