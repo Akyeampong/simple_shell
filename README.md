@@ -320,5 +320,10 @@ $
 
 ## Authors ##
 
- **KWAKU AKYEAMPONG AMANIN KWARTENG**
- **GODSON OMOGHENE**
+👤 KWAKU AKYEAMPONG AMANIN KWARTENG
+   
+   Github: @Akyeampong
+
+👤 JUSTICE MENSAH BLAY MEWUBE
+
+   Github: @GodsonO
